@@ -1,0 +1,92 @@
+<div class="container text-white card-margin pb-5 px-lg-5 px-sm-4 shadow-lg">
+    <h3  class="my-3 display-4">Edit Movie</h3>
+    <div *ngIf="editFlag == true" 
+        class="col success-msg border border-success my-2 p-3 pl-4 text-center">Movie details saved Successfully
+    </div>
+    <form class="row" [formGroup]="movieForm">
+        <div class="form-group col-lg-12">
+            <label for="name">Movie Name</label> 
+            <input  type="text"  
+                    class="form-control" 
+                    id="name" 
+                    formControlName="name">
+            <div    *ngIf="!movieForm.get('name').valid" 
+                    class="badge bg-danger text-white col-lg-12 p-1 error-block" 
+                    id="userNameErrorMsg">Name required
+            </div>
+        </div>
+        <div class="form-group col-lg-3">
+            <label for="boxOffice">Box-office</label> 
+            <input  type="text" 
+                    class="form-control" 
+                    id="boxOffice" 
+                    formControlName="boxOffice">
+            <div    *ngIf="movieForm.get('boxOffice').errors?.required" 
+                    class="badge bg-danger text-white col-lg-12 p-1 error-block" 
+                    id="userNameErrorMsg">Box-office required
+            </div>
+            <div    *ngIf="movieForm.get('boxOffice').errors?.pattern" 
+                    class="badge bg-danger text-white col-lg-12 p-1 error-block" 
+                    id="userNameErrorMsg">Box-office should be a number
+            </div>
+        </div>
+        <div class="form-group col-lg-3">
+            <label for="dateOfLaunch">Date of Launch</label> 
+            <input  type="text" 
+                    class="form-control" 
+                    id="dateOfLaunch" 
+                    formControlName="dateOfLaunch" 
+                    bsDatepicker>
+            <div    *ngIf="!movieForm.get('dateOfLaunch').valid" 
+                    class="badge bg-danger text-white col-lg-12 p-1 error-block" 
+                    id="userNameErrorMsg">Box-office required
+            </div>
+        </div>
+        <div class="form-group col-lg-3" formGroupName="division">
+            <label for="genre">Genre</label>
+            <select id="genre" 
+                    name="genre" 
+                    class="custom-select" 
+                    formControlName="genre">
+                <option *ngFor="let gen of genre" 
+                        [value]="gen.name">{{gen.name}}
+                </option>
+            </select>
+        </div>
+        <div class="col-lg-3">
+            Active<br>
+            <label class="form-check-inline mt-1" for="yes"> 
+                <input  type="radio" 
+                        class="form-check-input" 
+                        id="yes"
+                        name="active" 
+                        formControlName="active" 
+                        [value]="true"> Yes 
+            </label>
+            <label class="form-check-inline ml-3 mt-1" for="no">
+                <input  type="radio" 
+                        class="form-check-input" 
+                        id="no"
+                        name="active" 
+                        formControlName="active" 
+                        [value]="false"> No 
+            </label>
+        </div>
+        <div class="col-lg-3">
+            <label for="hasTeaser">
+                <input  type="checkbox" 
+                        formControlName="hasTeaser" 
+                        id="hasTeaser"> HasTeaser
+            </label>
+        </div>
+        <div class="col-12">
+            <div class="col-lg-3 m-0 p-0">
+                <button class="btn bg-color text-white mt-1 save-button btn-block" 
+                        type="button" 
+                        (click)="send()" 
+                        [disabled]="!movieForm.valid">Save
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

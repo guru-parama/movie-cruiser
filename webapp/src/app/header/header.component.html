@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-md navbar navbar-dark secondary-color sticky-top">
+  <a class="navbar-brand" href="#"><i class="material-icons align-middle">movie</i> Movie Cruiser</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"><span
+          class="navbar-toggler-icon"></span></button>
+  <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+      <ul class="navbar-nav ">
+          <li *ngIf="getName() == null" class="nav-item"><a class="nav-link text-white" routerLink="">Movie</a></li>
+          <li *ngIf="getName() != null" class="nav-item"><a class="nav-link text-white" routerLink="/movie-list">Movies</a></li>
+          <li *ngIf="getName() != 'admin'" class="nav-item"><a class="nav-link text-white" routerLink="favourites-list">Favourite</a></li>
+          <li *ngIf="getName() != null" class="nav-item"><a class="nav-link text-white" routerLink="/movie-list"><i
+                      class="material-icons align-bottom">home</i> {{getUsername()}}</a></li>
+          <li *ngIf="getName() == null" class="nav-item"><a class="nav-link text-white" routerLink="./signup">Signup</a></li>
+          <li *ngIf="getName() == null" class="nav-item"><a class="nav-link text-white" routerLink="/login">Login</a></li>
+          <li *ngIf="getName() != null"class="nav-item"><a class="nav-link text-white" (click)='signout()'>LogOut</a></li>
+      </ul>
+  </div>
+</nav>

@@ -1,0 +1,84 @@
+<div class="container mb-5 ">
+    <form class="card card-margin mb-5-coustom card-margin shadow-lg bg-trans text-white " [formGroup]="userForm">
+
+        <div class="card-body">
+            <h3 class="mb-3 display-4">Signup</h3>
+            <div class="col-12 my-2 alert-msg border border-danger p-3" *ngIf="userFlag == true"><div>User Already Exists try different user name</div></div>
+            <div class="form-row">
+                <div class="form-group col-md-12 col-lg-6">
+                    <label for="userName">User Name</label> 
+                    <input  type="text" 
+                            formControlName = "userName" 
+                            class="form-control " 
+                            id="userName" 
+                            placeholder="Enter User Name">
+                    <div *ngIf="!userForm.controls.userName.valid && (userForm.controls.userName.dirty || userForm.controls.userName.touched); else elseBlock" class="text-white">
+                            <div class="badge bg-danger col" *ngIf = "! userForm.controls.userName.errors.reqiured">User name reqiured</div> 
+                    </div>                    
+                    <ng-template #elseBlock><br></ng-template>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6 col-lg-6">
+                    <label for="firstName">First Name</label> 
+                    <input  type="text" 
+                            formControlName = "firstName" 
+                            class="form-control" 
+                            id="firstName" 
+                            placeholder="Enter First Name">
+                    <div *ngIf="!userForm.controls.firstName.valid && (userForm.controls.firstName.dirty || userForm.controls.firstName.touched); else elseBlock" class="text-white">
+                        <div class="badge bg-danger col" *ngIf = "! userForm.controls.firstName.errors.reqiured">First name reqiured</div> 
+                        <div class="badge bg-danger col" *ngIf = "userForm.controls.firstName.errors.reqiured"><br></div> 
+                    </div>
+                    <ng-template #elseBlock><br></ng-template>
+                </div>
+                <div class="form-group col-md-6 col-lg-6">
+                    <label for="lastName">Last Name</label>
+                    <input  type="text" 
+                            formControlName = "lastName" 
+                            class="form-control" 
+                            id="lastName" 
+                            placeholder="Enter Last Name">
+                    <div *ngIf="!userForm.controls.lastName.valid && (userForm.controls.lastName.dirty || userForm.controls.lastName.touched)" class="text-white">
+                            <div class="badge bg-danger col" *ngIf = "! userForm.controls.lastName.errors.reqiured">Last name reqiured</div> 
+                            <div class="badge bg-danger col" *ngIf = "userForm.controls.lastName.errors.reqiured"><br></div> 
+                        </div>
+                        <ng-template #elseBlock><br></ng-template>
+                </div>
+                <div class="form-group col-md-6 col-lg-6">
+                    <label for="pwd">Password</label>
+                    <input  type="password" 
+                            formControlName = "password" 
+                            class="form-control" 
+                            id="pwd" 
+                            placeholder="Enter Password">                
+                <div *ngIf="!userForm.controls.password.valid && (userForm.controls.password.dirty || userForm.controls.password.touched); else elseblck" class="text-white">
+                        <div class="badge bg-danger col" *ngIf = "! userForm.controls.password.errors.reqiured">Password reqiured</div>                         
+                    </div>
+                    <ng-template #elseblck><br></ng-template>
+                </div>
+                <div class="form-group col-md-6 col-lg-6">
+                    <label for="cpwd">Confirm Password</label>
+                    <input  type="password" 
+                            formControlName = "confirmPassword" 
+                            (keyup)="passMatch()" 
+                            class="form-control" 
+                            id="cpwd" 
+                            placeholder="Enter Confirm Password">
+                    <div *ngIf="!userForm.controls.confirmPassword.valid && (userForm.controls.confirmPassword.dirty || userForm.controls.confirmPassword.touched)" class="text-white">
+                            <div class="badge bg-danger col" *ngIf = "! userForm.controls.confirmPassword.errors.reqiured">Confirm Password</div>                      
+                    </div>
+                    <div *ngIf="userForm.controls.confirmPassword.valid && (userForm.controls.confirmPassword.dirty || userForm.controls.confirmPassword.touched)" class="text-white">
+                            <div class="badge bg-danger col" *ngIf = "passwordFlag == false">Enter matching password</div>
+                    </div>
+                </div>
+                <div class="form-group col-lg-6 mb-0">
+                    <button class="btn bg-danger my-3 save-button text-white btn-block" 
+                            type="button" 
+                            (click) = "signup()" 
+                            [disabled]="!userForm.valid" >Signup</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

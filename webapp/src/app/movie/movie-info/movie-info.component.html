@@ -1,0 +1,43 @@
+
+  <div class="card bg-transparent text-white">
+
+      <button class="btn p-0" data-toggle="collapse" attr.data-target="#demo{{movieDetails.boxOffice}}"><img class="card-img-top"
+              alt="{{movieDetails.name}}"
+              src="{{movieDetails.image}}"></button>
+
+      <div id="demo{{movieDetails.boxOffice}}" class="collapse card-body  px-2 pb-2 " data-parent="#movieGroup">
+
+          <div class="d-flex justify-content-between ">
+              <div><span *ngIf="userName == 'admin'"> <span *ngIf="movieDetails.active == true;else elseBlock" class="badge bg-success text-white">Active</span>
+                    <ng-template #elseBlock ><span class="badge bg-danger text-white">Inactive</span></ng-template></span>
+                   <small class="text-white">  {{movieDetails.genre}}</small>
+              </div>
+              <div><span *ngIf="movieDetails.hasTeaser==true"><i class="material-icons icon-size align-middle">camera_roll</i>&nbsp;<span class="badge bg-primary text-white">Has Teaser</span></span></div>
+          </div>
+          <div class="d-flex justify-content-between" *ngIf="userName == 'admin'">
+              <div><span class="text-white fonts"><i
+                          class="material-icons align-middle fonts">query_builder</i>
+                      Launch<br>{{movieDetails.dateOfLaunch | date:'MM/dd/yyyy'}}</span></div>
+              <div class="mt-2"><button class="btn bg-color text-white" (click) = edit(movieDetails.id)><i
+                          class="material-icons align-middle icon-size">edit</i> Edit</button></div>
+          </div>
+          <div *ngIf ="movieDetails.id == addMovieId && movieInFav == false" class="badge bg-success text-center p-1 m-0 text-white col-lg-12 error-block ">Movie Added Successfully</div>
+          <div *ngIf ="movieDetails.id == addMovieId && movieInFav == true" class="badge bg-danger text-center p-1 m-0 text-white col-lg-12 error-block ">Movie exists in Favourite List</div>
+          <div class="d-flex justify-content-end" *ngIf="userName != 'admin'">
+              <div class="mt-2"><button class="btn bg-color text-white" (click)="add(movieDetails.id)"><i
+                          class="material-icons align-middle" >favorite_border</i> Add to Favourite</button>
+              </div>
+          </div>
+      </div>
+      <div class="card-footer px-2 bg-trans">
+          <div class="d-flex justify-content-between form-inline">
+              <div class="h5 m-0">
+                  {{movieDetails.name}}
+              </div>
+              <div class="h6 m-0 small">
+                  {{movieDetails.boxOffice | currency:'USD'}}
+              </div>
+          </div>
+      </div>
+  </div>
+ 

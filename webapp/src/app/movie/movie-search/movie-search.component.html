@@ -1,0 +1,11 @@
+<div class="jumbotron display-4 mx-3 mt-3 text-white">Find Movie
+    <div class="input-group">
+        <button class="form-control col-2 col-lg-1 col-md-1 button"><i
+                class="material-icons text-dark">search</i></button>
+        <input  class="form-control button my-0 bg-transparent " 
+                type="text" 
+                placeholder="Search Movie" 
+                [(ngModel)] = "searchString" 
+                (keyup)="filter()">
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<app-movie-search (searchEmitter)="fillterData($event)"></app-movie-search>
+<div class="container-fluid mb-5" id="movieGroup">
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-6 col-lg-3 mb-3" *ngFor="let movie of filteredList">
+      <span >
+        <app-movie-info [movieDetails] = "movie"  
+                        [userName] = userName 
+                        [movieInFav] = alreadyExistingFlag 
+                        [addMovieId] = addToFavId 
+                        (addFavouriteEmitter) = "addFavourite($event)" ></app-movie-info>
+      </span>
+    </div>
+  </div>
+</div>

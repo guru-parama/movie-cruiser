@@ -1,0 +1,37 @@
+<div class="container px-lg-5 px-sm-4 mt-5 pt-2 text-white">
+  <h3 class="my-3 display-4">Favourites</h3>
+  <div *ngIf="favouriteEmplyFlag == true; else elseBlock">
+    <div class="col text-dark alert-msg border border-danger p-3 pl-4">No movie in favourite. Use <a
+        routerLink="/movie-list" class="text-white text-decoration-none">'Add to favourite'</a> option in menu item
+      list.</div>
+  </div>
+
+  <ng-template #elseBlock>
+    <div class="col-12 p-0">
+    <div *ngIf="removeFlag == true" class="col success-msg border border-success p-3 mb-3">Movie deleted Successfully </div>
+      <div *ngFor="let favourite of favouritesList; let i = index">
+        <span *ngIf="favourite.id != null">
+          <div class="card bg-trans">
+            <div class="card-body row-coustom">
+              <div class="col-8 col-sm-7 col-md-8 col-lg-8 p-0 text-left ">
+                <h5>{{favourite.name}}</h5>
+              </div>
+              <div class="col text-right text-secondary p-0"><a (click)="remove(favourite.id,index)"><i
+                    class="material-icons align-top text-white">delete_forever</i></a>
+              </div>
+            </div>
+          </div>
+        </span>
+      </div>
+      <div class="card bg-trans">
+        <div class="card-body row-coustom">
+          <div class="col-7 col-sm-7 col-md-8 col-lg-8 p-0 text-left">
+            <h4>No. of favourites</h4>
+          </div>
+          <div class="col-5 col-sm-5 col-md-4 col-lg-4 p-0 text-right text-white">{{total}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

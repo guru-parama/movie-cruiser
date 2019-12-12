@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd"
+		
+		default-autowire="byName" default-autowire-candidates="*" >
+
+	<bean id="movieList" class="java.util.ArrayList">
+		<constructor-arg >
+			<list>
+				<ref bean="movie1"/>
+				<ref bean="movie2"/>
+				<ref bean="movie3"/>
+				<ref bean="movie4"/>
+				<ref bean="movie5"/> 
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="movie1" class="com.cognizant.moviecruiser.model.Movie">
+		<constructor-arg name="id" value="1"></constructor-arg>
+		<constructor-arg name="name" value="Avatar"></constructor-arg>
+		<constructor-arg name="boxOffice" value="2787965087"></constructor-arg>
+		<constructor-arg name="active" value="true"></constructor-arg>
+		<constructor-arg name="dateOfLaunch" value="05/02/2017"></constructor-arg>
+		<constructor-arg name="genre" value="Science Fiction"></constructor-arg>
+		<constructor-arg name="hasTeaser" value="true"></constructor-arg>
+		<constructor-arg name="image" value="https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701824907-1200x675.jpg"></constructor-arg>
+	</bean>
+	<bean id="movie2" class="com.cognizant.moviecruiser.model.Movie">
+		<constructor-arg name="id" value="2"></constructor-arg>
+		<constructor-arg name="name" value="Avengers"></constructor-arg>
+		<constructor-arg name="boxOffice" value="1518812988"></constructor-arg>
+		<constructor-arg name="active" value="true"></constructor-arg>
+		<constructor-arg name="dateOfLaunch" value="23/07/2017"></constructor-arg>
+		<constructor-arg name="genre" value="Superhero"></constructor-arg>
+		<constructor-arg name="hasTeaser" value="false"></constructor-arg>
+		<constructor-arg name="image" value="https://pmcvariety.files.wordpress.com/2014/04/01-avengers-2012.jpg?w=1000&amp;h=563&amp;crop=1"></constructor-arg>
+	</bean>
+	<bean id="movie3" class="com.cognizant.moviecruiser.model.Movie">
+		<constructor-arg name="id" value="3"></constructor-arg>
+		<constructor-arg name="name" value="Titanic"></constructor-arg>
+		<constructor-arg name="boxOffice" value="2187463944"></constructor-arg>
+		<constructor-arg name="active" value="true"></constructor-arg>
+		<constructor-arg name="dateOfLaunch" value="21/07/2017"></constructor-arg>
+		<constructor-arg name="genre" value="Romance"></constructor-arg>
+		<constructor-arg name="hasTeaser" value="false"></constructor-arg>
+		<constructor-arg name="image" value="https://cdn.hipwallpaper.com/i/89/21/6v0aRp.jpg"></constructor-arg>
+	</bean>
+	<bean id="movie4" class="com.cognizant.moviecruiser.model.Movie">
+		<constructor-arg name="id" value="4"></constructor-arg>
+		<constructor-arg name="name" value="Jurassic World"></constructor-arg>
+		<constructor-arg name="boxOffice" value="1671713208"></constructor-arg>
+		<constructor-arg name="active" value="false"></constructor-arg>
+		<constructor-arg name="dateOfLaunch" value="07/01/2017"></constructor-arg>
+		<constructor-arg name="genre" value="Science Fiction"></constructor-arg>
+		<constructor-arg name="hasTeaser" value="false"></constructor-arg>
+		<constructor-arg name="image" value="https://www.ivanyolo.com/wp-content/uploads/2018/06/jurassic-world-fallen-kingdom-review.jpg"></constructor-arg>
+	</bean>
+	<bean id="movie5" class="com.cognizant.moviecruiser.model.Movie">
+		<constructor-arg name="id" value="5"></constructor-arg>
+		<constructor-arg name="name" value="Avengers:Endgame"></constructor-arg>
+		<constructor-arg name="boxOffice" value="2750760348"></constructor-arg>
+		<constructor-arg name="active" value="false"></constructor-arg>
+		<constructor-arg name="dateOfLaunch" value="07/01/2017"></constructor-arg>
+		<constructor-arg name="genre" value="Science Fiction"></constructor-arg>
+		<constructor-arg name="hasTeaser" value="true"></constructor-arg>
+		<constructor-arg name="image" value="https://nerdworth.com/wp-content/uploads/2019/06/wallpapersden.com_poster-of-avengers-endgame-movie_1920x1080.jpg"></constructor-arg>
+	</bean>
+
+</beans>
